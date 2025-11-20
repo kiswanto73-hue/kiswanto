@@ -44,49 +44,68 @@ main {
 
 #circular-container {
     /* Menentukan ukuran dan pusat lingkaran */
-    width: 500px; 
-    height: 500px; 
-    margin: 50px auto;
+
     position: relative; /* Penting untuk penempatan slot absolut */
     border-radius: 50%;
     /* Tambahkan visual border untuk melihat batas lingkaran */
     border: 3px dashed #ccc; 
+    /* MENGGANTI ATAU MENAMBAH INI: */
+    width: 80vw;         /* 80% dari lebar layar HP/desktop */
+    height: 80vw;        /* Sama dengan lebar agar bentuknya tetap lingkaran */
+    max-width: 500px;    /* Batas maksimum agar di desktop tidak terlalu besar */
+    max-height: 500px;
+    
+    position: relative; 
+    margin: 40px auto; 
+    /* ... properti lain yang mungkin sudah ada ... */
 }
 
 /* Slot Target */
 .slot {
-    width: 100px;
-    height: 100px;
     border: 3px solid #00A86B; /* Border hijau */
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.8em;
     color: #00A86B;
     background-color: #fff;
     /* Posisi absolut untuk menempatkan di lingkaran */
     position: absolute; 
     transform: translate(-50%, -50%); /* Memastikan pusat elemen di koordinat */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* MENGGANTI ATAU MENAMBAH INI: */
+    width: 20%; 
+    height: 20%;
+    font-size: 3vw; 
+    
+    border-radius: 50%;
+    /* ... properti lain yang mungkin sudah ada ... */
+}
+#circular-container .slot {
+    position: absolute;
+    /* Posisikan semua slot ke tengah wadah */
+    top: 50%;
+    left: 50%;
+    /* Atur titik rotasi ke tengah */
+    transform-origin: 0 0;
+    
+    /* Pindahkan slot ke atas-kiri agar pusatnya berada di tengah wadah */
+    transform: translate(-50%, -50%);
+    
+    transition: transform 0.5s ease;
 }
 
 /* Penempatan Slot Melingkar menggunakan Transformasi Rotasi */
 /* Rumus sudut: 360 derajat / 6 slot = 60 derajat per slot */
 
-/* Slot 1: Produsen (0 derajat, atas) */
-.slot[data-order="1"] { top: 0%; left: 50%; } 
-/* Slot 2: Konsumen Primer (60 derajat) */
-.slot[data-order="2"] { top: 25%; left: 93.3%; } 
-/* Slot 3: Konsumen Sekunder (120 derajat) */
-.slot[data-order="3"] { top: 75%; left: 93.3%; } 
-/* Slot 4: Konsumen Tersier (180 derajat, bawah) */
-.slot[data-order="4"] { top: 100%; left: 50%; } 
-/* Slot 5: Konsumen Puncak (240 derajat) */
-.slot[data-order="5"] { top: 75%; left: 6.7%; } 
-/* Slot 6: Dekomposer (300 derajat) */
-.slot[data-order="6"] { top: 25%; left: 6.7%; } 
 
+/* Tentukan Rotasi dan Jarak Keluar (360/6 = 60 derajat per slot) */
+.slot[data-order="1"] { transform: translate(-50%, -50%) rotate(0deg) translateX(35vw); }
+.slot[data-order="2"] { transform: translate(-50%, -50%) rotate(60deg) translateX(35vw); }
+.slot[data-order="3"] { transform: translate(-50%, -50%) rotate(120deg) translateX(35vw); }
+.slot[data-order="4"] { transform: translate(-50%, -50%) rotate(180deg) translateX(35vw); }
+.slot[data-order="5"] { transform: translate(-50%, -50%) rotate(240deg) translateX(35vw); }
+.slot[data-order="6"] { transform: translate(-50%, -50%) rotate(300deg) translateX(35vw); }
 /* Tombol dan Feedback (pertahankan styling sebelumnya) */
 #check-button {
     padding: 10px 20px;

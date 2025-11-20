@@ -37,7 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Implementasi Drag and Drop (HTML5 Drag API)
     let draggedItem = null;
-
+let draggedItem = null;
+    let originalParent;         // <-- BARIS BARU 1: Menyimpan tempat asal item
+    let touchStartX, touchStartY; // <-- BARIS BARU 2: Menyimpan koordinat sentuhan awal
+    
+    function setupDragListeners() {
+        // ...
     function setupDragListeners() {
         const items = document.querySelectorAll('.organism-image');
         items.forEach(item => {
@@ -69,7 +74,92 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             });
-        });
+        // B. TOUCH MOVE (Menggantikan drag pada mouse)
+    function onTouchMove(e) {
+        if (!draggedItem) return;
+        const touch = e.touches[0];
+        
+        // Pindahkan item ke posisi sentuhan
+        draggedItem.style.left = touch.clientX - touchStartX + 'px';
+        draggedItem.style.top = touch.clientY - touchStartY + 'px';
+    }
+
+    // C. END TOUCH (Menggantikan drop/dragend pada mouse)
+    function onTouchEnd(e) {
+        if (!draggedItem) return;
+
+        // Cari slot di bawah jari
+        draggedItem.style.opacity = '1';
+        draggedItem.style.display = 'none'; // Sembunyikan sebentar untuk menemukan elemen di bawah
+        const targetSlot = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+        draggedItem.style.display = 'block'; // Tampilkan lagi
+
+        if (targetSlot && targetSlot.classList.contains('slot') && targetSlot.children.length === 0) {
+            // Drop berhasil di slot yang kosong
+            targetSlot.innerHTML = '';
+            targetSlot.appendChild(draggedItem);
+            draggedItem.style.position = 'static'; // Kembalikan posisi normal
+            draggedItem.style.zIndex = 'auto';
+        } else {
+            // Drop gagal, kembalikan ke tempat asal (draggableArea)
+            originalParent.appendChild(draggedItem);
+            draggedItem.style.position = 'static'; // Kembalikan posisi normal
+            draggedItem.style.zIndex = 'auto';
+        }
+
+        // Hapus listener agar tidak bergerak terus
+        document.removeEventListener('touchmove', onTouchMove);
+        document.removeEventListener('touchend', onTouchEnd);
+        draggedItem = null;
+    }
+Langkah 3: Tambahkan Listener touchstart
+Sekarang kita akan menambahkan event listener yang mendeteksi saat item disentuh, lalu memanggil fungsi onTouchMove dan onTouchEnd yang baru saja Anda buat.
+
+Apa yang harus dilakukan: Tambahkan blok kode item.addEventListener('touchstart', ...) ini.
+
+Tempatnya: Di dalam perulangan items.forEach di samping listener dragstart dan dragend yang sudah ada.
+
+JavaScript
+
+    function setupDragListeners() {
+        const items = document.querySelectorAll('.organism-image');
+        items.forEach(item => {
+            // Listener MOUSE yang sudah ada (dragstart)
+            item.addEventListener('dragstart', (e) => { 
+                // ...
+            });
+
+            // Listener MOUSE yang sudah ada (dragend)
+            item.addEventListener('dragend', (e) => { 
+                // ...
+            });
+
+            // --- KODE BARU: START TOUCH (A. Menggantikan dragstart) ---
+            item.addEventListener('touchstart', (e) => {
+                e.preventDefault(); // Mencegah scrolling default HP
+                draggedItem = e.target;
+                originalParent = draggedItem.parentNode;
+
+                // Dapatkan koordinat sentuhan awal
+                const touch = e.touches[0];
+                touchStartX = touch.clientX - draggedItem.getBoundingClientRect().left;
+                touchStartY = touch.clientY - draggedItem.getBoundingClientRect().top;
+                
+                // Posisikan item secara absolut untuk digerakkan
+                draggedItem.style.position = 'absolute';
+                draggedItem.style.zIndex = 1000;
+                draggedItem.style.opacity = '0.7';
+
+                // Pindahkan item ke body agar bisa bergerak bebas di atas elemen lain
+                document.body.appendChild(draggedItem);
+                
+                // Panggil onTouchMove dan onTouchEnd saat sentuhan bergerak
+                document.addEventListener('touchmove', onTouchMove);
+                document.addEventListener('touchend', onTouchEnd);
+            });
+            // -----------------------------------------------------------------
+        });
+        // ... sisa kode slot.forEach dan fungsi onTouchMove/onTouchEnd});
     }
 
     // 4. Fungsi Validasi Jawaban
