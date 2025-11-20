@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Rantai Makanan Melingkar</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🔄 Susun Siklus Rantai Makanan!</h1>
+    </header>
+
+    <main>
+        <div id="level-info">
+            <h2>Level 1: Rantai Makanan Lengkap (Siklus)</h2>
+        </div>
+
+        <section id="draggable-area">
+            <h3>Organisme Tersedia (Seret ke Lingkaran)</h3>
+        </section>
+
+        <section id="droppable-area">
+            <h3>Siklus Rantai Makanan</h3>
+            <div id="circular-container">
+                <div class="slot" data-order="1">Produsen</div>
+                <div class="slot" data-order="2">K. Primer</div>
+                <div class="slot" data-order="3">K. Sekunder</div>
+                <div class="slot" data-order="4">K. Tersier</div>
+                <div class="slot" data-order="5">K. Puncak</div>
+                <div class="slot" data-order="6">Dekomposer</div>
+                </div>
+            
+            <button id="check-button">Cek Jawaban Siklus</button>
+            <div id="feedback-message"></div>
+        </section>
+    </main>
+
+    <footer>
+        <script src="assets/js/script.js"></script>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+:root {
+    --primary-color: #007bff; /* Biru Bootstrap */
+    --secondary-color: #6c757d; /* Abu-abu */
+    --accent-color: #ffc107; /* Kuning (Warna Seru!) */
+    --bg-light: #f8f9fa;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: var(--bg-light);
+}
+
+/* Kustomisasi Sidebar */
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    transition: margin 0.25s ease-out;
+    background-color: #212529 !important; /* Dark Mode Sidebar */
+}
+
+#sidebar-wrapper .list-group-item {
+    border: none;
+    transition: background-color 0.15s ease-in-out;
+    padding: 1rem 1.5rem;
+}
+
+#sidebar-wrapper .list-group-item:hover {
+    background-color: #343a40 !important;
+}
+
+#sidebar-wrapper .list-group-item.active {
+    background-color: var(--primary-color) !important;
+    border-left: 5px solid var(--accent-color); /* Aksen Seru! */
+    color: white !important;
+}
+
+/* Kustomisasi Konten Utama */
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}
+
+/* Efek Seru pada Kartu */
+.custom-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.custom-card:hover {
+    transform: translateY(-5px); /* Efek melayang */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+}
+body {
+    background-image: url('WhatsApp Image 2023-08-20 at 20.44.35'); /* Ganti dengan nama file Anda */
+    background-size: cover; /* Memastikan gambar menutupi seluruh area */
+    background-repeat: no-repeat; /* Mencegah pengulangan gambar */
+    background-attachment: fixed; /* Membuat gambar tetap (tidak ikut scrolling) */
+}

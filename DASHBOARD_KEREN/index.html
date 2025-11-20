@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css"><meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang di SDN 165 Tanjung Jabung Barat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        /* CSS Kustom Sederhana untuk sentuhan sekolah */
+        
+        :root {
+            --primary-color: #0d6efd; /* Biru Primer Bootstrap */
+            --accent-color: #ffc107; /* Kuning Aksen */
+        }
+        .jumbotron-hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-bg.jpg') center center no-repeat;
+            background-size: cover;
+            color: white;
+            padding: 100px 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .feature-card {
+            transition: transform 0.3s ease-in-out;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .footer-school {
+            background-color: #343a40;
+            color: white;
+        }
+        /* Tambahkan gambar dummy untuk placeholder */
+        .carousel-item img {
+            height: 50vh; 
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+            <i class="fas fa-graduation-cap me-2"></i> SDN 165 TANJAB BARAT
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-home me-1"></i> Beranda</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-info-circle me-1"></i> Profil
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="sejarah.html">Sejarah</a></li>
+                        <li><a class="dropdown-item" href="visimisi.html">Visi & Misi</a></li>
+                        <li><a class="dropdown-item" href="#">Struktur Organisasi</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-users me-1"></i> Guru & Staf</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-book-open me-1"></i> Galeri</a></li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="rantai-makanan-game/index.html">
+                        <i class="fas fa-gamepad me-1"></i> Game Rantai Makanan 
+                    </a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-envelope me-1"></i> Kontak</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <header class="mb-5">
+        <div id="schoolCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#schoolCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#schoolCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#schoolCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://via.placeholder.com/1920x600/007bff/FFFFFF?text=SELAMAT+DATANG" class="d-block w-100" alt="Selamat Datang">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 p-3 rounded">
+                        <h1 class="fw-bold">SDN 165 Tanjung Jabung Barat</h1>
+                        <p class="fs-5">Mencetak Generasi Unggul Berakhlak Mulia dan Berwawasan Lingkungan.</p>
+                        <a href="#" class="btn btn-warning btn-lg fw-bold mt-2">Daftar Sekarang! <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://via.placeholder.com/1920x600/28a745/FFFFFF?text=FASILITAS+TERLENGKAP" class="d-block w-100" alt="Fasilitas">
+                    <div class="carousel-caption bg-dark bg-opacity-50 p-3 rounded">
+                        <h5>Fasilitas Belajar Terbaik</h5>
+                        <p>Ruang kelas nyaman.</p>
+                        <img src="images/ruang_kelas.jpeg" class="img-fluid rounded mt-3" alt="ruang_kelas" width="800"  height="300" />
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://via.placeholder.com/1920x600/ffc107/333333?text=PRESTASI+GEMILANG" class="d-block w-100" alt="Prestasi">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 p-3 rounded">
+                        <h5>Prestasi Akademik dan Non-Akademik</h5>
+                        <p>Raih prestasi bersama guru-guru yang berdedikasi.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#schoolCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#schoolCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        
+        <section class="text-center mb-5">
+            <h2 class="mb-4 fw-bold text-primary">Mengapa Memilih SDN 165?</h2>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="card p-4 feature-card h-100">
+                        <i class="fas fa-chalkboard-teacher fa-3x text-success mb-3"></i>
+                        <h4 class="fw-bold">Guru Profesional</h4>
+                        <p>Staf pengajar yang berpengalaman dan bersertifikasi.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card p-4 feature-card h-100">
+                        <i class="fas fa-leaf fa-3x text-info mb-3"></i>
+                        <h4 class="fw-bold">Lingkungan Hijau</h4>
+                        <p>Sekolah Adiwiyata dengan fokus pada pendidikan lingkungan hidup.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card p-4 feature-card h-100">
+                        <i class="fas fa-handshake fa-3x text-warning mb-3"></i>
+                        <h4 class="fw-bold">Komunitas Aktif</h4>
+                        <p>Kerja sama erat antara sekolah, orang tua, dan masyarakat.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card p-4 feature-card h-100">
+                        <i class="fas fa-user-graduate fa-3x"></i>
+                        <h4 class="fw-bold">Praktik Baik Pembelajaran</h4>
+                        <p>Praktik baik kegiatan pembelajaran yang telah dilakukan</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <h2 class="mb-4 fw-bold text-primary border-bottom pb-2"><i class="fas fa-bullhorn me-2"></i> Berita & Pengumuman Terbaru</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <img src="images/ruang_kelas.jpeg" class="card-img-top" alt="Kegiatan Sekolah">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Juara Lomba Tari Tingkat Kabupaten</h5>
+                            <p class="card-text text-muted small"><i class="fas fa-calendar-alt"></i> 10 November 2025</p>
+                            <a href="#" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x200?text=Pengumuman+Rapat" class="card-img-top" alt="Pengumuman Rapat">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Rapat Komite Sekolah Awal Semester</h5>
+                            <p class="card-text text-muted small"><i class="fas fa-calendar-alt"></i> 5 November 2025</p>
+                            <a href="#" class="btn btn-sm btn-primary">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action py-3">
+                            <h6 class="mb-1">Jadwal UTS Semester Ganjil</h6>
+                            <small class="text-muted"><i class="fas fa-clock"></i> Hari ini, Pukul 08:00 WIB</small>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action py-3">
+                            <h6 class="mb-1">Pendaftaran Ekstrakurikuler Baru</h6>
+                            <small class="text-muted"><i class="fas fa-calendar-check"></i> Batas akhir 30 Nov</small>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action py-3">
+                            <h6 class="mb-1">Pengumuman Libur Nasional</h6>
+                            <small class="text-muted"><i class="fas fa-info-circle"></i> Lihat Kalender Akademik</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="text-center mb-5">
+            <h2 class="mb-4 fw-bold text-primary"><i class="fas fa-map-marker-alt me-2"></i> Kunjungi Kami</h2>
+            <div class="ratio ratio-16x9">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1021114.4591935821!2d101.76452834687498!3d-1.3392975000000014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e2f2500056d160b%3A0x5e9ff4330b5cbb2e!2sSD%20Negeri%20165%20Tanjung%20Jabung%20Barat!5e0!3m2!1sen!2sid!4v1763607374040!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></>" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer-school pt-5 pb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold"><i class="fas fa-graduation-cap me-2"></i> SDN 165 Tanjab Barat</h5>
+                    <p>Menciptakan lingkungan belajar yang nyaman dan kondusif untuk tumbuh kembang siswa.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">Tautan Cepat</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">PPDB Online</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">E-Rapor Siswa</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Kalender Akademik</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">Hubungi Kami</h5>
+                    <p>
+                        <i class="fas fa-map-marker-alt me-2"></i> Jl. Pendidikan No. 165, Tanjung Jabung Barat<br>
+                        <i class="fas fa-phone me-2"></i> (0742) XXX XXX<br>
+                        <i class="fas fa-envelope me-2"></i> sdn165@sekolah.id
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 SDN 165 Tanjung Jabung Barat. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sedikit interaksi JavaScript kustom (opsional)
+        document.addEventListener('DOMContentLoaded', function () {
+            // Memberi efek smooth scroll ketika klik tautan di navbar
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="script.js"></script>
+</body>
+</html>

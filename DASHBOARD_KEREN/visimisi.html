@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visi & Misi SDN 169/V Cinta Damai</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --accent-color: #ffc107;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .section-header {
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+        }
+
+        /* Styling Khusus Kartu Visi */
+        .card-visi {
+            background: linear-gradient(135deg, var(--primary-color), #0056b3);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .card-visi::before {
+            content: 'VISI';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 8rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.08);
+            z-index: 0;
+        }
+
+        /* Styling Kartu Misi */
+        .card-misi {
+            border-left: 5px solid var(--accent-color);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+
+        .card-misi:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .misi-icon {
+            color: var(--primary-color);
+            background-color: rgba(13, 110, 253, 0.1);
+            padding: 10px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html"><i class="fas fa-graduation-cap me-2"></i> SDN 169/V CINTA DAMAI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i> Beranda
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <i class="fas fa-info-circle me-1"></i> Visi & Misi
+                        </a>
+                    </li>
+                    </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center mb-5">
+                <h1 class="fw-bold text-primary section-header d-inline-block">Visi dan Misi Sekolah</h1>
+            </div>
+        </div>
+        
+        <section class="mb-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card-visi">
+                        <i class="fas fa-star fa-3x text-warning mb-3"></i>
+                        <h2 class="text-warning fw-bold mb-3" style="z-index: 1;">Visi Sekolah</h2>
+                        <blockquote class="blockquote mb-0" style="z-index: 1;">
+                            <p class="fs-4 lead fw-light">
+                                "Terwujudnya Peserta Didik yang **Berkarakter Religius**, **Unggul** dalam Prestasi Akademik dan Non-Akademik, serta **Berbudaya Literasi** dalam Lingkungan Pembelajaran yang Inovatif."
+                            </p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <div class="row justify-content-center mb-4">
+                <div class="col-12 text-center">
+                    <h3 class="fw-bold text-secondary">🎯 Misi: Langkah Mewujudkan Visi</h3>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                
+                <div class="col-lg-6">
+                    <div class="card card-misi h-100 p-3">
+                        <div class="d-flex align-items-start">
+                            <div class="misi-icon"><i class="fas fa-crosshairs fa-lg"></i></div>
+                            <div class="flex-grow-1">
+                                <h5 class="fw-bold text-primary">Karakter & Imtaq</h5>
+                                <p class="card-text">Meningkatkan keimanan dan ketakwaan (Imtaq) serta mengembangkan karakter peserta didik yang **jujur, disiplin, dan bertanggung jawab**.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card card-misi h-100 p-3">
+                        <div class="d-flex align-items-start">
+                            <div class="misi-icon"><i class="fas fa-lightbulb fa-lg"></i></div>
+                            <div class="flex-grow-1">
+                                <h5 class="fw-bold text-primary">Inovasi Pembelajaran</h5>
+                                <p class="card-text">Melaksanakan proses pembelajaran yang **PAIKEM** (Aktif, Inovatif, Kreatif, Efektif, Menyenangkan) dengan mengedepankan pendekatan **literasi**.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card card-misi h-100 p-3">
+                        <div class="d-flex align-items-start">
+                            <div class="misi-icon"><i class="fas fa-medal fa-lg"></i></div>
+                            <div class="flex-grow-1">
+                                <h5 class="fw-bold text-primary">Pengembangan Prestasi</h5>
+                                <p class="card-text">Mengembangkan potensi peserta didik melalui kegiatan **ekstrakurikuler** untuk mencapai prestasi di bidang akademik maupun non-akademik.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card card-misi h-100 p-3">
+                        <div class="d-flex align-items-start">
+                            <div class="misi-icon"><i class="fas fa-chalkboard-teacher fa-lg"></i></div>
+                            <div class="flex-grow-1">
+                                <h5 class="fw-bold text-primary">Kompetensi Pendidik</h5>
+                                <p class="card-text">Meningkatkan **kompetensi dan profesionalisme** seluruh tenaga pendidik dan kependidikan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card card-misi h-100 p-3">
+                        <div class="d-flex align-items-start">
+                            <div class="misi-icon"><i class="fas fa-users fa-lg"></i></div>
+                            <div class="flex-grow-1">
+                                <h5 class="fw-bold text-primary">Jalinan Kemitraan</h5>
+                                <p class="card-text">Memperkuat jalinan kemitraan yang **sinergis** dengan orang tua, masyarakat, dan lembaga terkait (seperti Tanoto Foundation dan Puskesmas).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card card-misi h-100 p-3">
+                        <div class="d-flex align-items-start">
+                            <div class="misi-icon"><i class="fas fa-tree fa-lg"></i></div>
+                            <div class="flex-grow-1">
+                                <h5 class="fw-bold text-primary">Lingkungan Ramah Anak</h5>
+                                <p class="card-text">Mewujudkan lingkungan sekolah yang **bersih, indah, nyaman, dan ramah anak** sebagai penunjang proses belajar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white pt-4 pb-2 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 SDN 169/V Cinta Damai. Semua Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
