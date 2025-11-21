@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Data Rantai Makanan
+    // 1. DATA INTI PERMAINAN
     const currentLevel = {
         correctOrder: [
             "rumput", 
@@ -11,19 +11,20 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     };
 
+    // Acak urutan organisme untuk area drag
     const allOrganisms = currentLevel.correctOrder.slice().sort(() => Math.random() - 0.5);
 
+    // Ambil Elemen DOM
     const draggableArea = document.getElementById('draggable-area');
     const slots = document.querySelectorAll('.slot');
     const checkButton = document.getElementById('check-button');
     const feedbackMessage = document.getElementById('feedback-message');
 
-    // 2. Fungsi untuk MEMUAT GAMBAR
+    // 2. FUNGSI MEMUAT ORGANISME KE AREA DRAG
     function loadOrganisms() {
         draggableArea.innerHTML = '<h3>Pilih Organisme (Seret ke Bawah)</h3>';
         allOrganisms.forEach(organism => {
             const img = document.createElement('img');
-            // Pastikan path gambar sudah benar
             img.src = `assets/images/${organism}.png`;
             img.alt = organism.charAt(0).toUpperCase() + organism.slice(1);
             img.classList.add('organism-image');
@@ -34,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupDragListeners();
     }
 
-    // 3. Implementasi Drag and Drop (Mouse & Touch)
+    // 3. LOGIKA DRAG AND DROP (MOUSE & TOUCH)
     let draggedItem = null;
     let originalParent;         
     let touchStartX, touchStartY; 
@@ -42,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function setupDragListeners() {
         const items = document.querySelectorAll('.organism-image');
         
-        // FUNGSI HELPER TOUCH EVENTS 
+        // --- TOUCH EVENTS HELPER ---
         function onTouchMove(e) {
             if (!draggedItem) return;
             const touch = e.touches[0];
@@ -56,12 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
             draggedItem.style.opacity = '1';
             draggedItem.style.display = 'none'; 
             
-            // Mencari elemen di bawah jari saat touchend
+            // Dapatkan elemen di bawah sentuhan
             const targetElement = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
             draggedItem.style.display = 'block'; 
 
-            // PERUBAHAN KUNCI: Gunakan .closest('.slot') untuk mencari target drop yang valid.
-            // Ini sangat penting untuk MENGABAIKAN elemen anak panah (.arrow).
+            // **SOLUSI UNTUK PANA & TOUCH:** Cari slot terdekat. Jika disentuh panah, ini akan null.
             const targetSlot = targetElement ? targetElement.closest('.slot') : null;
 
             if (targetSlot && targetSlot.children.length === 0) {
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // A. MOUSE (DRAGSTART & DRAGEND)
             item.addEventListener('dragstart', (e) => {
                 draggedItem = e.target;
-                originalParent = draggedItem.parentNode; // Ambil parent untuk drag mouse
+                originalParent = draggedItem.parentNode;
                 setTimeout(() => { e.target.style.opacity = '0.5'; }, 0);
             });
 
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Fungsi Validasi Jawaban
+    // 4. FUNGSI VALIDASI JAWABAN
     checkButton.addEventListener('click', () => {
         let isCorrect = true;
         let playerChain = [];
@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     isCorrect = false;
                 }
             } else {
+                // Jika ada slot yang kosong
                 isCorrect = false;
             }
         });
