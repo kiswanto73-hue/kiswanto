@@ -3,48 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Rantai Makanan Melingkar</title>
-    <link rel="stylesheet" href="assets/css/style.css?v=15">
+    <title>Game Rantai Makanan Interaktif</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=100"> 
 </head>
 <body>
-
     <header>
-        <h1>🔄 Susun Siklus Rantai Makanan!</h1>
+        <h1>Siklus Rantai Makanan</h1>
+        <p>Susun organisme sesuai urutan aliran energi yang benar.</p>
     </header>
 
     <main>
-        <div id="level-info">
-            <h2>Level 1: Rantai Makanan Lengkap (Siklus)</h2>
-        </div>
+        <div id="draggable-area">
+            <h3>Pilih Organisme (Seret ke Bawah)</h3>
+            </div>
 
-        <section id="draggable-area">
-            <h3>Organisme Tersedia (Seret ke Lingkaran)</h3>
-        </section>
+        <div id="circular-container">
+            <div class="slot" data-order="1">Produsen</div>
+            <div class="arrow arrow-1"></div>
 
-        <section id="droppable-area">
-            <h3>Siklus Rantai Makanan</h3>
-            <div id="circular-container">
-    <div class="slot" data-order="1">1</div>
-    
-    <div class="arrow arrow-1"></div>
-    
-    <div class="slot" data-order="2">2</div>
-    
-    <div class="arrow arrow-2"></div>
+            <div class="slot" data-order="2">K. Primer</div>
+            <div class="arrow arrow-2"></div>
 
-    <div class="slot" data-order="6">6</div>
-    
-    <div class="arrow arrow-6"></div> 
-</div>
+            <div class="slot" data-order="3">K. Sekunder</div>
+            <div class="arrow arrow-3"></div>
+
+            <div class="slot" data-order="4">K. Tersier</div>
+            <div class="arrow arrow-4"></div>
+
+            <div class="slot" data-order="5">K. Puncak</div>
+            <div class="arrow arrow-5"></div>
+
+            <div class="slot" data-order="6">Dekomposer</div>
+            <div class="arrow arrow-6"></div> 
             
-            <button id="check-button">Cek Jawaban Siklus</button>
-            <div id="feedback-message"></div>
-        </section>
+            </div>
+
+        <button id="check-button">Cek Jawaban</button>
+
+        <p id="feedback-message"></p>
     </main>
-
-    <footer>
-        <script src="assets/js/script.js?v=15"></script>
-    </footer>
-
+    
+    <script src="assets/js/script.js?v=100"></script>
 </body>
 </html>
