@@ -1,7 +1,7 @@
 /* Styling Dasar */
 body {
     font-family: sans-serif;
-    background-color: #f4ffec; /* Latar belakang cerah */
+    background-color: #f4ffec; 
     color: #333;
     margin: 0;
     padding: 20px 0;
@@ -9,7 +9,7 @@ body {
 }
 
 header {
-    background-color: #00A86B; /* Hijau Siklus Baru */
+    background-color: #00A86B; 
     color: white;
     padding: 15px;
     border-radius: 8px;
@@ -49,7 +49,7 @@ main {
 }
 
 .organism-image:active {
-    transform: scale(1.05); /* Efek saat disentuh/diklik */
+    transform: scale(1.05); 
 }
 
 /* --- Tampilan Melingkar (RESPONSIF) --- */
@@ -62,7 +62,7 @@ main {
     max-height: 500px;
 
     margin: 40px auto;
-    position: relative; /* Penting untuk posisi slot */
+    position: relative; 
     border-radius: 50%;
     border: 3px dashed #ccc; /* Garis Lingkaran Rantai Makanan */
 }
@@ -92,12 +92,11 @@ main {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform-origin: 0 0; /* Titik asal transformasi di tengah */
+    transform-origin: 0 0; 
     transition: transform 0.5s ease;
 }
 
-/* Tentukan Rotasi dan Jarak Keluar (Radius: 33vw agar tidak meluber) */
-/* Gunakan transform lengkap untuk menempatkan pusat slot di posisi yang tepat */
+/* Tentukan Rotasi dan Jarak Keluar (Radius: 30vw untuk centering yang akurat) */
 .slot[data-order="1"] { transform: translate(-50%, -50%) rotate(0deg) translateX(30vw); }
 .slot[data-order="2"] { transform: translate(-50%, -50%) rotate(60deg) translateX(30vw); }
 .slot[data-order="3"] { transform: translate(-50%, -50%) rotate(120deg) translateX(30vw); }
@@ -111,7 +110,6 @@ main {
     height: 100%;
     margin: 0;
     box-sizing: border-box; 
-    /* Menghilangkan border agar hanya border slot yang terlihat */
     border: none; 
 }
 

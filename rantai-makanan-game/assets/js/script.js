@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Data Rantai Makanan
     const currentLevel = {
-        // ...
         correctOrder: [
             "rumput", 
             "belalang",  
@@ -19,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkButton = document.getElementById('check-button');
     const feedbackMessage = document.getElementById('feedback-message');
 
-    // 2. Fungsi untuk MEMUAT GAMBAR ke area draggable
+    // 2. Fungsi untuk MEMUAT GAMBAR
     function loadOrganisms() {
         draggableArea.innerHTML = '<h3>Pilih Organisme (Seret ke Bawah)</h3>';
         allOrganisms.forEach(organism => {
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupDragListeners();
     }
 
-    // 3. Implementasi Drag and Drop (HTML5 Drag & Touch API)
+    // 3. Implementasi Drag and Drop (Mouse & Touch)
     let draggedItem = null;
     let originalParent;         
     let touchStartX, touchStartY; 
@@ -42,23 +41,51 @@ document.addEventListener('DOMContentLoaded', () => {
     function setupDragListeners() {
         const items = document.querySelectorAll('.organism-image');
         
-        // --- 3A. PENANGANAN MOUSE (HTML5 Drag API) ---
+        // FUNGSI HELPER TOUCH EVENTS (Didefinisikan di dalam setupDragListeners agar bisa mengakses variabel lokal)
+        function onTouchMove(e) {
+            if (!draggedItem) return;
+            const touch = e.touches[0];
+            draggedItem.style.left = touch.clientX - touchStartX + 'px';
+            draggedItem.style.top = touch.clientY - touchStartY + 'px';
+        }
+
+        function onTouchEnd(e) {
+            if (!draggedItem) return;
+
+            draggedItem.style.opacity = '1';
+            draggedItem.style.display = 'none'; 
+            const targetSlot = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+            draggedItem.style.display = 'block'; 
+
+            if (targetSlot && targetSlot.classList.contains('slot') && targetSlot.children.length === 0) {
+                targetSlot.innerHTML = '';
+                targetSlot.appendChild(draggedItem);
+                draggedItem.style.position = 'static'; 
+                draggedItem.style.zIndex = 'auto';
+            } else {
+                originalParent.appendChild(draggedItem);
+                draggedItem.style.position = 'static'; 
+                draggedItem.style.zIndex = 'auto';
+            }
+
+            document.removeEventListener('touchmove', onTouchMove);
+            document.removeEventListener('touchend', onTouchEnd);
+            draggedItem = null;
+        }
+
         items.forEach(item => {
-            // DRAG START
+            // A. MOUSE (DRAGSTART & DRAGEND)
             item.addEventListener('dragstart', (e) => {
                 draggedItem = e.target;
-                setTimeout(() => {
-                    e.target.style.opacity = '0.5';
-                }, 0);
+                setTimeout(() => { e.target.style.opacity = '0.5'; }, 0);
             });
 
-            // DRAG END
             item.addEventListener('dragend', (e) => {
                 e.target.style.opacity = '1';
                 draggedItem = null;
             });
 
-            // --- 3B. PENANGANAN TOUCH (START TOUCH) ---
+            // B. TOUCH START
             item.addEventListener('touchstart', (e) => {
                 e.preventDefault(); 
                 draggedItem = e.target;
@@ -79,63 +106,19 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // --- 3C. PENANGANAN SLOT (DROP TARGETS) ---
         slots.forEach(slot => {
-            // DRAG OVER (Mouse)
-            slot.addEventListener('dragover', (e) => {
-                e.preventDefault(); 
-            });
+            // MOUSE (DRAG OVER & DROP)
+            slot.addEventListener('dragover', (e) => { e.preventDefault(); });
 
-            // DROP (Mouse)
             slot.addEventListener('drop', (e) => {
                 e.preventDefault();
-                if (e.target.classList.contains('slot')) {
-                    if (e.target.children.length === 0) {
-                        e.target.innerHTML = '';
-                        e.target.appendChild(draggedItem);
-                    }
+                if (e.target.classList.contains('slot') && e.target.children.length === 0) {
+                    e.target.innerHTML = '';
+                    e.target.appendChild(draggedItem);
                 }
             });
         });
-
-        // --- 3D. FUNGSI HELPER TOUCH EVENTS ---
-        
-        // TOUCH MOVE (Menggantikan drag pada mouse)
-        function onTouchMove(e) {
-            if (!draggedItem) return;
-            const touch = e.touches[0];
-            
-            draggedItem.style.left = touch.clientX - touchStartX + 'px';
-            draggedItem.style.top = touch.clientY - touchStartY + 'px';
-        }
-
-        // END TOUCH (Menggantikan drop/dragend pada mouse)
-        function onTouchEnd(e) {
-            if (!draggedItem) return;
-
-            draggedItem.style.opacity = '1';
-            draggedItem.style.display = 'none'; 
-            const targetSlot = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
-            draggedItem.style.display = 'block'; 
-
-            if (targetSlot && targetSlot.classList.contains('slot') && targetSlot.children.length === 0) {
-                // Drop berhasil
-                targetSlot.innerHTML = '';
-                targetSlot.appendChild(draggedItem);
-                draggedItem.style.position = 'static'; 
-                draggedItem.style.zIndex = 'auto';
-            } else {
-                // Drop gagal, kembalikan ke tempat asal
-                originalParent.appendChild(draggedItem);
-                draggedItem.style.position = 'static'; 
-                draggedItem.style.zIndex = 'auto';
-            }
-
-            document.removeEventListener('touchmove', onTouchMove);
-            document.removeEventListener('touchend', onTouchEnd);
-            draggedItem = null;
-        }
-    } // Akhir setupDragListeners
+    }
 
     // 4. Fungsi Validasi Jawaban
     checkButton.addEventListener('click', () => {
