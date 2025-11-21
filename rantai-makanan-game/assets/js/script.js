@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function setupDragListeners() {
         const items = document.querySelectorAll('.organism-image');
         
-        // FUNGSI HELPER TOUCH EVENTS (Didefinisikan di dalam setupDragListeners agar bisa mengakses variabel lokal)
+        // FUNGSI HELPER TOUCH EVENTS 
         function onTouchMove(e) {
             if (!draggedItem) return;
             const touch = e.touches[0];
@@ -54,15 +54,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
             draggedItem.style.opacity = '1';
             draggedItem.style.display = 'none'; 
-            const targetSlot = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+            
+            // Mencari elemen di bawah jari saat touchend
+            const targetElement = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
             draggedItem.style.display = 'block'; 
 
-            if (targetSlot && targetSlot.classList.contains('slot') && targetSlot.children.length === 0) {
+            // PERUBAHAN KUNCI: Cari elemen slot terdekat (closest)
+            // Ini menghindari elemen panah (.arrow) dianggap sebagai target drop
+            const targetSlot = targetElement ? targetElement.closest('.slot') : null;
+
+            if (targetSlot && targetSlot.children.length === 0) {
+                // Drop berhasil pada slot yang valid dan kosong
                 targetSlot.innerHTML = '';
                 targetSlot.appendChild(draggedItem);
                 draggedItem.style.position = 'static'; 
                 draggedItem.style.zIndex = 'auto';
             } else {
+                // Drop gagal, kembalikan ke tempat asal (draggable-area atau slot sebelumnya)
                 originalParent.appendChild(draggedItem);
                 draggedItem.style.position = 'static'; 
                 draggedItem.style.zIndex = 'auto';
@@ -77,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // A. MOUSE (DRAGSTART & DRAGEND)
             item.addEventListener('dragstart', (e) => {
                 draggedItem = e.target;
+                originalParent = draggedItem.parentNode; // Ambil parent untuk drag mouse
                 setTimeout(() => { e.target.style.opacity = '0.5'; }, 0);
             });
 
@@ -112,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             slot.addEventListener('drop', (e) => {
                 e.preventDefault();
+                // Verifikasi bahwa target drop adalah slot dan kosong (pencegahan terhadap arrow)
                 if (e.target.classList.contains('slot') && e.target.children.length === 0) {
                     e.target.innerHTML = '';
                     e.target.appendChild(draggedItem);
