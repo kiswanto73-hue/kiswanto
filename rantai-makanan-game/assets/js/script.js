@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         draggableArea.innerHTML = '<h3>Pilih Organisme (Seret ke Bawah)</h3>';
         allOrganisms.forEach(organism => {
             const img = document.createElement('img');
+            // Pastikan path gambar sudah benar
             img.src = `assets/images/${organism}.png`;
             img.alt = organism.charAt(0).toUpperCase() + organism.slice(1);
             img.classList.add('organism-image');
@@ -59,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
             draggedItem.style.display = 'block'; 
 
-            // PERUBAHAN KUNCI: Cari elemen slot terdekat (closest)
-            // Ini menghindari elemen panah (.arrow) dianggap sebagai target drop
+            // PERUBAHAN KUNCI: Gunakan .closest('.slot') untuk mencari target drop yang valid.
+            // Ini sangat penting untuk MENGABAIKAN elemen anak panah (.arrow).
             const targetSlot = targetElement ? targetElement.closest('.slot') : null;
 
             if (targetSlot && targetSlot.children.length === 0) {
@@ -70,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 draggedItem.style.position = 'static'; 
                 draggedItem.style.zIndex = 'auto';
             } else {
-                // Drop gagal, kembalikan ke tempat asal (draggable-area atau slot sebelumnya)
+                // Drop gagal, kembalikan ke tempat asal
                 originalParent.appendChild(draggedItem);
                 draggedItem.style.position = 'static'; 
                 draggedItem.style.zIndex = 'auto';
@@ -121,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             slot.addEventListener('drop', (e) => {
                 e.preventDefault();
-                // Verifikasi bahwa target drop adalah slot dan kosong (pencegahan terhadap arrow)
+                // Verifikasi bahwa target drop adalah slot dan kosong
                 if (e.target.classList.contains('slot') && e.target.children.length === 0) {
                     e.target.innerHTML = '';
                     e.target.appendChild(draggedItem);
