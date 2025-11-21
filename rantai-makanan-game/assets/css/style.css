@@ -64,9 +64,6 @@ main {
     margin: 40px auto;
     position: relative; /* Penting untuk posisi absolute slot dan panah */
     border-radius: 50%;
-    border: 3px dashed #ccc; /* Garis Lingkaran Rantai Makanan */
-    box-sizing: content-box; 
-    overflow: hidden; /* Memastikan semua elemen tetap di dalam batas garis */
 }
 
 /* Slot Target (Tempat Menempel) */
