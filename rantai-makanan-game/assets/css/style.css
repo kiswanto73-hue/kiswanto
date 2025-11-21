@@ -64,8 +64,6 @@ main {
     margin: 40px auto;
     position: relative; 
     border-radius: 50%;
-    border: 2px dashed #ccc; /* Garis Lingkaran Rantai Makanan */
-    overflow: hidden; /* Tambahkan ini agar semua slot pasti berada di dalam batas */
 }
 
 /* Slot Target (Tempat Menempel) */
