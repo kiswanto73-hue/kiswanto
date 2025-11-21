@@ -102,7 +102,7 @@ main {
 .slot[data-order="3"] { transform: translate(-50%, -50%) rotate(0deg) translateX(20vw); }
 .slot[data-order="4"] { transform: translate(-50%, -50%) rotate(0deg) translateX(20vw); }
 .slot[data-order="5"] { transform: translate(-50%, -50%) rotate(0deg) translateX(20vw); }
-.slot[data-order="6"] { transform: translate(-50%, -50%) rotate(0deg) translateX(20vw); }
+.slot[data-order="6"] { transform: translate(-50%, -50%) rotate(300deg) translateX(20vw); }
 
 /* Styling gambar di dalam slot (setelah di-drop) */
 .slot .organism-image {
