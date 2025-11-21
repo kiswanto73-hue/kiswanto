@@ -87,11 +87,7 @@ main {
     top: 50%;
     left: 50%;
     /* Atur titik rotasi ke tengah */
-    transform-origin: 0 0;
-    
-    /* Pindahkan slot ke atas-kiri agar pusatnya berada di tengah wadah */
-    transform: translate(-50%, -50%);
-    
+    transform-origin: 0 0;    
     transition: transform 0.5s ease;
 }
 
