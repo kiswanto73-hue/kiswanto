@@ -93,6 +93,45 @@ main {
     left: 50%;
     transform-origin: 0 0; 
     transition: transform 0.5s ease;
+    /* Styling Dasar untuk Elemen Panah */
+.arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Panjang garis harus kurang dari jarak slot (30vw) */
+    width: 25vw; 
+    height: 5px; /* Ketebalan garis */
+    background: #FF9800; /* Warna panah (misalnya: Oranye) */
+    transform-origin: 0 0; /* Mulai dari pusat wadah */
+}
+
+/* Penempatan Panah Menggunakan Transformasi Rotasi */
+/* Panah ditempatkan di antara sudut 60 derajat. Sudut panah = Sudut slot - 30 derajat */
+
+.arrow-1 { transform: translate(-50%, -50%) rotate(30deg) translateX(10vw); } 
+.arrow-2 { transform: translate(-50%, -50%) rotate(90deg) translateX(10vw); }
+.arrow-3 { transform: translate(-50%, -50%) rotate(150deg) translateX(10vw); }
+.arrow-4 { transform: translate(-50%, -50%) rotate(210deg) translateX(10vw); }
+.arrow-5 { transform: translate(-50%, -50%) rotate(270deg) translateX(10vw); }
+.arrow-6 { transform: translate(-50%, -50%) rotate(330deg) translateX(10vw); }
+
+/* --- Membuat Kepala Panah (Menggunakan Pseudo-element) --- */
+
+.arrow::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    /* Menggeser ke tengah garis */
+    transform: translateY(-50%); 
+
+    /* Bentuk Segitiga */
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent; 
+    border-bottom: 10px solid transparent; 
+    border-left: 10px solid #FF9800; /* Warna Segitiga sesuai garis */
+}
 }
 
 /* Tentukan Rotasi dan Jarak Keluar (Radius: 30vw untuk centering yang akurat) */
