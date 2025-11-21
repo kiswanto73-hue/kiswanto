@@ -9,7 +9,7 @@ body {
 }
 
 header {
-    background-color: #00A86B; /* Hijau Siklus Baru */
+    background-color: #00A86B; 
     color: white;
     padding: 15px;
     border-radius: 8px;
@@ -62,8 +62,11 @@ main {
     max-height: 500px;
 
     margin: 40px auto;
-    position: relative; /* Penting untuk posisi absolute slot dan panah */
+    position: relative; 
     border-radius: 50%;
+    border: 3px dashed #ccc; /* Garis Lingkaran Rantai Makanan */
+    box-sizing: content-box; 
+    overflow: hidden; 
 }
 
 /* Slot Target (Tempat Menempel) */
@@ -117,22 +120,22 @@ main {
     position: absolute;
     top: 50%;
     left: 50%;
-    /* PANJANG GARIS DITINGKATKAN agar menghubungkan slot */
-    width: 40vw; 
+    /* PENYESUAIAN KUNCI: Panjang panah diperkecil agar pas antar slot */
+    width: 10vw; 
     height: 5px; 
     background: #FF9800; 
     transform-origin: 0 0; 
     z-index: 10; 
 }
 
-/* Rotasi Panah - Jarak Keluar (Radius: 20vw agar panah membentang ke slot berikutnya) */
-/* Sudut panah adalah Sudut Slot - 30 derajat */
-.arrow-1 { transform: translate(-50%, -50%) rotate(30deg) translateX(20vw); } 
-.arrow-2 { transform: translate(-50%, -50%) rotate(90deg) translateX(20vw); }
-.arrow-3 { transform: translate(-50%, -50%) rotate(150deg) translateX(20vw); }
-.arrow-4 { transform: translate(-50%, -50%) rotate(210deg) translateX(20vw); }
-.arrow-5 { transform: translate(-50%, -50%) rotate(270deg) translateX(20vw); }
-.arrow-6 { transform: translate(-50%, -50%) rotate(330deg) translateX(20vw); }
+/* Rotasi Panah - Jarak Keluar (Radius: 35vw) */
+/* Panah dimulai lebih jauh (35vw) agar terlihat menyambung dari tepi slot ke tepi slot lainnya. */
+.arrow-1 { transform: translate(-50%, -50%) rotate(30deg) translateX(35vw); } 
+.arrow-2 { transform: translate(-50%, -50%) rotate(90deg) translateX(35vw); }
+.arrow-3 { transform: translate(-50%, -50%) rotate(150deg) translateX(35vw); }
+.arrow-4 { transform: translate(-50%, -50%) rotate(210deg) translateX(35vw); }
+.arrow-5 { transform: translate(-50%, -50%) rotate(270deg) translateX(35vw); }
+.arrow-6 { transform: translate(-50%, -50%) rotate(330deg) translateX(35vw); }
 
 /* Membuat Kepala Panah (Segitiga) */
 .arrow::after {
