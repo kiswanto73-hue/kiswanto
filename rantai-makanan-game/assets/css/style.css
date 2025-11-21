@@ -1,10 +1,10 @@
 /* Styling Dasar */
 body {
     font-family: sans-serif;
-    background-color: #f4ffec; /* Warna latar lebih terang, ramah lingkungan */
+    background-color: #f4ffec; /* Latar belakang cerah */
     color: #333;
     margin: 0;
-    padding: 20px 0; /* Padding vertikal agar ada ruang */
+    padding: 20px 0;
     text-align: center;
 }
 
@@ -30,8 +30,8 @@ main {
     margin: 0 10px 30px 10px;
     min-height: 100px;
     border: 2px dashed #00bcd4;
-    display: flex; /* Mengatur item agar sejajar */
-    flex-wrap: wrap; /* Memungkinkan item turun di HP */
+    display: flex; 
+    flex-wrap: wrap; 
     justify-content: center;
     align-items: center;
 }
@@ -55,23 +55,23 @@ main {
 /* --- Tampilan Melingkar (RESPONSIF) --- */
 
 #circular-container {
-    /* Ukuran Wadah Utama (80% dari lebar layar, maksimal 500px) */
+    /* Ukuran Wadah Utama menggunakan VW dan batas MAX untuk responsivitas */
     width: 80vw; 
     height: 80vw; 
     max-width: 500px; 
     max-height: 500px;
 
     margin: 40px auto;
-    position: relative; 
+    position: relative; /* Penting untuk posisi slot */
     border-radius: 50%;
-    border: 3px dashed #ccc; 
+    border: 3px dashed #ccc; /* Garis Lingkaran Rantai Makanan */
 }
 
-/* Slot Target */
+/* Slot Target (Tempat Menempel) */
 .slot {
-    /* Ukuran Slot (20% dari wadah utama 80vw) */
-    width: 20%; 
-    height: 20%;
+    /* Ukuran Slot relatif terhadap Wadah */
+    width: 18%; 
+    height: 18%; 
     
     border: 3px solid #00A86B; 
     border-radius: 50%;
@@ -84,10 +84,10 @@ main {
 
     /* Text responsif */
     font-size: 3vw; 
-    max-font-size: 16px; /* Batas atas font di desktop */
+    max-font-size: 16px; 
 }
 
-/* Penempatan Slot Melingkar (Menggunakan Transformasi untuk Akurasi) */
+/* Penempatan Slot Melingkar (Teknik Transformasi) */
 #circular-container .slot {
     position: absolute;
     top: 50%;
@@ -96,28 +96,30 @@ main {
     transition: transform 0.5s ease;
 }
 
-/* Tentukan Rotasi dan Jarak Keluar (Jari-jari: 35vw dari pusat) */
-/* Jarak keluar (translateX) harus dalam vw agar mengikuti ukuran wadah */
-.slot[data-order="1"] { transform: translate(-50%, -50%) rotate(0deg) translateX(35vw); }
-.slot[data-order="2"] { transform: translate(-50%, -50%) rotate(60deg) translateX(35vw); }
-.slot[data-order="3"] { transform: translate(-50%, -50%) rotate(120deg) translateX(35vw); }
-.slot[data-order="4"] { transform: translate(-50%, -50%) rotate(180deg) translateX(35vw); }
-.slot[data-order="5"] { transform: translate(-50%, -50%) rotate(240deg) translateX(35vw); }
-.slot[data-order="6"] { transform: translate(-50%, -50%) rotate(300deg) translateX(35vw); }
+/* Tentukan Rotasi dan Jarak Keluar (Radius: 33vw agar tidak meluber) */
+/* Gunakan transform lengkap untuk menempatkan pusat slot di posisi yang tepat */
+.slot[data-order="1"] { transform: translate(-50%, -50%) rotate(0deg) translateX(33vw); }
+.slot[data-order="2"] { transform: translate(-50%, -50%) rotate(60deg) translateX(33vw); }
+.slot[data-order="3"] { transform: translate(-50%, -50%) rotate(120deg) translateX(33vw); }
+.slot[data-order="4"] { transform: translate(-50%, -50%) rotate(180deg) translateX(33vw); }
+.slot[data-order="5"] { transform: translate(-50%, -50%) rotate(240deg) translateX(33vw); }
+.slot[data-order="6"] { transform: translate(-50%, -50%) rotate(300deg) translateX(33vw); }
 
-/* Jika item sudah diletakkan di slot, kembalikan ukurannya */
+/* Styling gambar di dalam slot (setelah di-drop) */
 .slot .organism-image {
     width: 100%;
     height: 100%;
     margin: 0;
-    box-sizing: border-box; /* Memastikan border tidak menambah ukuran */
+    box-sizing: border-box; 
+    /* Menghilangkan border agar hanya border slot yang terlihat */
+    border: none; 
 }
 
 /* Tombol dan Feedback */
 #check-button {
     padding: 10px 20px;
     font-size: 1.1em;
-    background-color: #FF9800; /* Warna Oranye */
+    background-color: #FF9800; 
     color: white;
     border: none;
     border-radius: 5px;
