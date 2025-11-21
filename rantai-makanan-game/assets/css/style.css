@@ -9,7 +9,7 @@ body {
 }
 
 header {
-    background-color: #00A86B; 
+    background-color: #00A86B; /* Hijau Siklus Baru */
     color: white;
     padding: 15px;
     border-radius: 8px;
@@ -55,15 +55,18 @@ main {
 /* --- Tampilan Melingkar (RESPONSIF) --- */
 
 #circular-container {
-    /* Ukuran Wadah Utama menggunakan VW dan batas MAX untuk responsivitas */
+    /* Ukuran Wadah Utama menggunakan VW dan batas MAX */
     width: 80vw; 
     height: 80vw; 
     max-width: 500px; 
     max-height: 500px;
 
     margin: 40px auto;
-    position: relative; 
+    position: relative; /* Penting untuk posisi absolute slot dan panah */
     border-radius: 50%;
+    border: 3px dashed #ccc; /* Garis Lingkaran Rantai Makanan */
+    box-sizing: content-box; /* Memastikan dimensi konsisten */
+    overflow: hidden; /* Memastikan semua elemen tetap di dalam batas garis */
 }
 
 /* Slot Target (Tempat Menempel) */
@@ -81,7 +84,6 @@ main {
     background-color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-    /* Text responsif */
     font-size: 3vw; 
     max-font-size: 16px; 
 }
@@ -93,54 +95,15 @@ main {
     left: 50%;
     transform-origin: 0 0; 
     transition: transform 0.5s ease;
-    /* Styling Dasar untuk Elemen Panah */
-.arrow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    /* Panjang garis harus kurang dari jarak slot (30vw) */
-    width: 25vw; 
-    height: 5px; /* Ketebalan garis */
-    background: #FF9800; /* Warna panah (misalnya: Oranye) */
-    transform-origin: 0 0; /* Mulai dari pusat wadah */
 }
 
-/* Penempatan Panah Menggunakan Transformasi Rotasi */
-/* Panah ditempatkan di antara sudut 60 derajat. Sudut panah = Sudut slot - 30 derajat */
-
-.arrow-1 { transform: translate(-50%, -50%) rotate(30deg) translateX(10vw); } 
-.arrow-2 { transform: translate(-50%, -50%) rotate(90deg) translateX(10vw); }
-.arrow-3 { transform: translate(-50%, -50%) rotate(150deg) translateX(10vw); }
-.arrow-4 { transform: translate(-50%, -50%) rotate(210deg) translateX(10vw); }
-.arrow-5 { transform: translate(-50%, -50%) rotate(270deg) translateX(10vw); }
-.arrow-6 { transform: translate(-50%, -50%) rotate(330deg) translateX(10vw); }
-
-/* --- Membuat Kepala Panah (Menggunakan Pseudo-element) --- */
-
-.arrow::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    /* Menggeser ke tengah garis */
-    transform: translateY(-50%); 
-
-    /* Bentuk Segitiga */
-    width: 0;
-    height: 0;
-    border-top: 10px solid transparent; 
-    border-bottom: 10px solid transparent; 
-    border-left: 10px solid #FF9800; /* Warna Segitiga sesuai garis */
-}
-}
-
-/* Tentukan Rotasi dan Jarak Keluar (Radius: 30vw untuk centering yang akurat) */
-.slot[data-order="1"] { transform: translate(-50%, -50%) rotate(0deg) translateX(20vw); }
-.slot[data-order="2"] { transform: translate(-50%, -50%) rotate(60deg) translateX(20vw); }
-.slot[data-order="3"] { transform: translate(-50%, -50%) rotate(120deg) translateX(20vw); }
-.slot[data-order="4"] { transform: translate(-50%, -50%) rotate(180deg) translateX(20vw); }
-.slot[data-order="5"] { transform: translate(-50%, -50%) rotate(240deg) translateX(20vw); }
-.slot[data-order="6"] { transform: translate(-50%, -50%) rotate(300deg) translateX(20vw); }
+/* Rotasi Slot - Jarak Keluar (Radius: 30vw untuk centering yang akurat) */
+.slot[data-order="1"] { transform: translate(-50%, -50%) rotate(0deg) translateX(30vw); }
+.slot[data-order="2"] { transform: translate(-50%, -50%) rotate(60deg) translateX(30vw); }
+.slot[data-order="3"] { transform: translate(-50%, -50%) rotate(120deg) translateX(30vw); }
+.slot[data-order="4"] { transform: translate(-50%, -50%) rotate(180deg) translateX(30vw); }
+.slot[data-order="5"] { transform: translate(-50%, -50%) rotate(240deg) translateX(30vw); }
+.slot[data-order="6"] { transform: translate(-50%, -50%) rotate(300deg) translateX(30vw); }
 
 /* Styling gambar di dalam slot (setelah di-drop) */
 .slot .organism-image {
@@ -149,6 +112,44 @@ main {
     margin: 0;
     box-sizing: border-box; 
     border: none; 
+}
+
+/* --- Penempatan Anak Panah (Arrow Connectors) --- */
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25vw; /* Panjang garis */
+    height: 5px; 
+    background: #FF9800; 
+    transform-origin: 0 0; 
+    /* Panah akan terlihat di atas elemen lain */
+    z-index: 10; 
+}
+
+/* Rotasi Panah - Penempatan di antara slot (Radius: 10vw dari pusat wadah) */
+/* Sudut panah adalah Sudut Slot - 30 derajat */
+.arrow-1 { transform: translate(-50%, -50%) rotate(30deg) translateX(10vw); } 
+.arrow-2 { transform: translate(-50%, -50%) rotate(90deg) translateX(10vw); }
+.arrow-3 { transform: translate(-50%, -50%) rotate(150deg) translateX(10vw); }
+.arrow-4 { transform: translate(-50%, -50%) rotate(210deg) translateX(10vw); }
+.arrow-5 { transform: translate(-50%, -50%) rotate(270deg) translateX(10vw); }
+.arrow-6 { transform: translate(-50%, -50%) rotate(330deg) translateX(10vw); }
+
+/* Membuat Kepala Panah (Segitiga) */
+.arrow::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%); 
+
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent; 
+    border-bottom: 10px solid transparent; 
+    border-left: 10px solid #FF9800; /* Warna Segitiga */
 }
 
 /* Tombol dan Feedback */
