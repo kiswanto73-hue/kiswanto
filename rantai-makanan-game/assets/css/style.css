@@ -56,10 +56,10 @@ main {
 
 #circular-container {
     /* Ukuran Wadah Utama menggunakan VW dan batas MAX untuk responsivitas */
-    width: 70vw; 
-    height: 70vw; 
-    max-width: 400px; 
-    max-height: 400px;
+    width: 80vw; 
+    height: 80vw; 
+    max-width: 500px; 
+    max-height: 500px;
 
     margin: 40px auto;
     position: relative; 
